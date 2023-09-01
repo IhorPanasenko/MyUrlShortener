@@ -42,10 +42,17 @@ function LoginForm() {
             localStorage.setItem("token", response.data);
             alert("Congratulation! Successfull login");
             navigate("ShortUrlsTable");
-            
+
         } catch (error) {
             console.error('API error:', error);
-            alert(error.response.data);
+
+            console.log(error.response);
+            if (error.response !== undefined) {
+                alert(error.response.data);
+            }
+            else {
+                alert("Internal Server error")
+            }
         }
     };
 
